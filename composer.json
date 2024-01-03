@@ -1,0 +1,24 @@
+{
+	"name": "oliverthiele/ot-heroimage",
+	"type": "typo3-cms-extension",
+	"description": "This content element can output larger image widths than normal elements and is therefore suitable for outputting images across the entire screen width.",
+	"homepage": "",
+	"license": [
+		"GPL-2.0-or-later"
+	],
+	"require": {
+		"typo3/cms-core": "^12.4"
+	},
+	"conflict": {
+	},
+	"autoload": {
+		"psr-4": {
+			"OliverThiele\\OtHeroimage\\": "Classes/"
+		}
+	},
+	"extra": {
+		"typo3/cms": {
+			"extension-key": "ot_heroimage"
+		}
+	}
+}

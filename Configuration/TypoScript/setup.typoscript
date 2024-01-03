@@ -1,0 +1,30 @@
+tt_content {
+  ot_heroimage =< lib.contentElement
+  ot_heroimage {
+    templateName = OtHeroimage
+
+    templateRootPaths {
+      # 10 = EXT:ot_bootstrap5/Resources/Private/Content/Templates/
+      20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Templates/
+    }
+
+    partialRootPaths {
+      # 10 = EXT:ot_bootstrap5/Resources/Private/Content/Partials/
+      20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Partials/
+    }
+
+    layoutRootPaths {
+      # 10 = EXT:ot_bootstrap5/Resources/Private/Content/Layouts/
+      20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Layouts/
+    }
+
+    dataProcessing {
+      10 = files
+      10 {
+        as = files
+        references.fieldName = assets
+        references.table = tt_content
+      }
+    }
+  }
+}
