@@ -24,7 +24,7 @@ call_user_func(
             [
                 'LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:wizard.title',
                 'ot_heroimage',
-                'ot-heroimage'
+                'ot-heroimage',
             ],
             'html',
             'after'
@@ -69,15 +69,15 @@ call_user_func(
                                         'config' => [
                                             'appearance' => [
                                                 'elementBrowserType' => 'file',
-                                                'elementBrowserAllowed' => 'jpg,jpeg,png,gif,svg'
-                                            ]
-                                        ]
-                                    ]
-                                ]
-                            ]
-                        ]
-                    ]
-                ]
+                                                'elementBrowserAllowed' => 'jpg,jpeg,png,gif,svg',
+                                            ],
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
             ]
         );
     }
