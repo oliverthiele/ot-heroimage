@@ -2,12 +2,23 @@
 	"name": "oliverthiele/ot-heroimage",
 	"type": "typo3-cms-extension",
 	"description": "This content element can output larger image widths than normal elements and is therefore suitable for outputting images across the entire screen width.",
-	"homepage": "",
+	"homepage": "https://www.oliver-thiele.de/",
+	"authors": [
+		{
+			"name": "Oliver Thiele",
+			"email": "mail@oliver-thiele.de",
+			"role": "Developer",
+			"homepage": "https://www.oliver-thiele.de/"
+		}
+	],
 	"license": [
 		"GPL-2.0-or-later"
 	],
+	"keywords": [
+		"TYPO3 CMS"
+	],
 	"require": {
-		"typo3/cms-core": "^12.4"
+		"typo3/cms-core": "^13.4"
 	},
 	"conflict": {
 	},
