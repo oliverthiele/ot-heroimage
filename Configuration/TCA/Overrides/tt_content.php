@@ -3,37 +3,23 @@
 declare(strict_types=1);
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Frontend\Preview\TextmediaPreviewRenderer;
 
 defined('TYPO3') or die();
 
 call_user_func(
     static function () {
-        if (!isset($GLOBALS['TCA']['tt_content']['types']['ot_heroimage']) ||
-            !is_array($GLOBALS['TCA']['tt_content']['types']['ot_heroimage'])
-        ) {
-            $GLOBALS['TCA']['tt_content']['types']['ot_heroimage'] = [];
-        }
 
-        /*********************
-         * Add Content Element
-         *********************/
-        ExtensionManagementUtility::addTcaSelectItem(
-            'tt_content',
-            'CType',
+        ExtensionManagementUtility::addPlugin(
             [
-                'LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:wizard.title',
-                'ot_heroimage',
-                'ot-heroimage',
+                'label' => 'LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:wizard.title',
+                'description' => 'LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:wizard.description',
+                'value' => 'ot_heroimage',
+                'icon' => 'ot-heroimage',
+                'group' => 'extras'
             ],
-            'html',
-            'after'
+            'CType',
+            'ot_heroimage',
         );
-
-        /*************
-         * Assign Icon
-         *************/
-        $GLOBALS['TCA']['tt_content']['ctrl']['typeicon_classes']['ot_heroimage'] = 'ot-heroimage';
 
         /************************
          * Configure element type
@@ -41,7 +27,6 @@ call_user_func(
         $GLOBALS['TCA']['tt_content']['types']['ot_heroimage'] = array_replace_recursive(
             $GLOBALS['TCA']['tt_content']['types']['ot_heroimage'],
             [
-                'previewRenderer' => TextmediaPreviewRenderer::class,
                 'showitem' => '
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     --palette--;;general,

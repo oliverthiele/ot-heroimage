@@ -10,7 +10,7 @@
 				<source>Heroimage</source>
 			</trans-unit>
 			<trans-unit id="wizard.description" resname="wizard.description">
-				<source>CE Heroimage</source>
+				<source>Heroimage with a larger image width than in normal content columns.</source>
 			</trans-unit>
 		</body>
 	</file>

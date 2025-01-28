@@ -11,8 +11,8 @@
 				<target>Heroimage</target>
 			</trans-unit>
 			<trans-unit id="wizard.description" resname="wizard.description" approved="yes">
-				<source>CE Heroimage</source>
-				<target>CE Heroimage</target>
+				<source>Image with a larger image width than in normal content columns.</source>
+				<target>Bild mit einer größeren Bildbreite als bei normalen Content-Spalten.</target>
 			</trans-unit>
 		</body>
 	</file>
