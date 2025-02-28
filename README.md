@@ -9,7 +9,7 @@ is therefore suitable for outputting images across the entire screen width.
 
 ## Requirements
 
-* TYPO3 v12.4 LTS
+* TYPO3 v13.4 LTS
 
 ## Installation
 
@@ -29,3 +29,22 @@ _setup.typoscript_
 ```typo3_typoscript
 @import 'EXT:ot_heroimage/Configuration/TypoScript/setup.typoscript'
 ```
+
+
+## Changes in v3.0.0
+
+- Headings are no longer included in the output.
+
+- Optionally, an additional image can be added for a smartphone. This is hidden at the breakpoint medium device.
+
+- Bitmap images are generated in different sizes using srcset.
+
+- If SVGs are used, no srcset is automatically output in the img tag.
+
+- A new field layout (DB: `ot_layout`) is used to enable padding.
+  Texts in images can be aligned flush with the content. The TYPO3 field layout already has layout 1-3 defined,
+  so I did not use the TYPO3 field `layout`
+
+## Geplant:
+
+- Unterstützung für Site sets

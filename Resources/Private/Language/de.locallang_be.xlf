@@ -7,12 +7,32 @@
 		<header/>
 		<body>
 			<trans-unit id="wizard.title" resname="wizard.title" approved="yes">
-				<source>Heroimage</source>
-				<target>Heroimage</target>
+				<source>Hero image</source>
+				<target>Hero image</target>
 			</trans-unit>
 			<trans-unit id="wizard.description" resname="wizard.description" approved="yes">
 				<source>Image with a larger image width than in normal content columns.</source>
 				<target>Bild mit einer größeren Bildbreite als bei normalen Content-Spalten.</target>
+			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.description" resname="tt_content.ot_layout.description" approved="yes">
+				<source>For images where the text extends to the edge of the image, an additional space can be added to make it flush with the content.</source>
+				<target>Für Bilder, bei denen der Text bis zum Bildrand geht, kann ein zusätzlicher Abstand hinzugefügt werden, der dann bündig zu den Inhalten ist.</target>
+			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.withoutSpacing" resname="tt_content.ot_layout.withoutSpacing" approved="yes">
+				<source>Without spacing</source>
+				<target>Ohne Abstand</target>
+			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.withSpacing" resname="tt_content.ot_layout.withSpacing" approved="yes">
+				<source>With spacing</source>
+				<target>Mit Abstand</target>
+			</trans-unit>
+			<trans-unit id="tt_content.assets.label" resname="tt_content.assets.label" approved="yes">
+				<source>Hero Image</source>
+				<target>Hero Bild</target>
+			</trans-unit>
+			<trans-unit id="tt_content.image.label" resname="tt_content.image.label" approved="yes">
+				<source>Optional image for small display resolutions</source>
+				<target>Optionales Bild für kleine Bildschirm-Auflösungen</target>
 			</trans-unit>
 		</body>
 	</file>

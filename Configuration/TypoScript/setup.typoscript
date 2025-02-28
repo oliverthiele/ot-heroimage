@@ -4,17 +4,14 @@ tt_content {
     templateName = OtHeroimage
 
     templateRootPaths {
-      # 10 = EXT:ot_bootstrap5/Resources/Private/Content/Templates/
       20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Templates/
     }
 
     partialRootPaths {
-      # 10 = EXT:ot_bootstrap5/Resources/Private/Content/Partials/
       20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Partials/
     }
 
     layoutRootPaths {
-      # 10 = EXT:ot_bootstrap5/Resources/Private/Content/Layouts/
       20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Layouts/
     }
 
@@ -23,6 +20,12 @@ tt_content {
       10 {
         as = files
         references.fieldName = assets
+        references.table = tt_content
+      }
+      20 = files
+      20 {
+        as = imagesMobile
+        references.fieldName = image
         references.table = tt_content
       }
     }

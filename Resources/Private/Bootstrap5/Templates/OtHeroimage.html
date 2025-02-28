@@ -1,25 +1,88 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
-      xmlns:otl="http://typo3.org/ns/OliverThiele/OtLib/ViewHelpers"
       lang="en" data-namespace-typo3-fluid="true">
 <head>
     <meta charset="utf-8">
-    <title>Template: OtTextMedia</title>
+    <title>Template: OtHeroimage</title>
 </head>
 <body>
 
 <f:layout name="Default"/>
 
-<f:section name="Header2"/>
+<f:section name="Header"/>
 
 <f:section name="Main">
-    <div class="ot-heroimage">
-        <div class="row">
-            <f:if condition="{files.0}">
-                <f:variable name="image" value="{files.0}"/>
-                <f:image image="{image}" class="img-fluid w-100" maxWidth="2560"/>
-            </f:if>
-        </div>
+    <div class="ot-heroimage{f:if(condition: '{data.ot_layout} == \'withSpacing\'', then: ' p-3')}">
+         <f:comment><!-- Image definition for Desktop and Mobile --></f:comment>
+        <f:if condition="{files.0}">
+            <f:variable name="image" value="{files.0}"/>
+        </f:if>
+        <f:if condition="{imagesMobile.0}">
+            <f:variable name="imageMobile" value="{imagesMobile.0}"/>
+        </f:if>
+        <f:comment><!-- Desktop & Mobile View --></f:comment>
+        <f:if condition="{imageMobile}">
+            <f:then>
+                <f:comment><!-- Mobile view--></f:comment>
+                <div class="d-md-none">
+                    <f:if condition="{image.originalFile.extension} == 'svg'">
+                        <f:then>
+                            <f:render section="svg" arguments="{image: imageMobile}"/>
+                        </f:then>
+                        <f:else>
+                            <f:render section="bitmap" arguments="{image: imageMobile}"/>
+                        </f:else>
+                    </f:if>
+                </div>
+                <f:comment><!-- Desktop view--></f:comment>
+                <div class="d-none d-md-block">
+                    <f:if condition="{image.originalFile.extension} == 'svg'">
+                        <f:then>
+                            <f:render section="svg" arguments="{image: image}"/>
+                        </f:then>
+                        <f:else>
+                            <f:render section="bitmap" arguments="{image: image}"/>
+                        </f:else>
+                    </f:if>
+                </div>
+            </f:then>
+            <f:else>
+                <f:comment><!-- Only desktop image (if no mobile picture is available) --></f:comment>
+                <f:if condition="{image}">
+                    <f:then>
+                        <f:if condition="{image.originalFile.extension} == 'svg'">
+                            <f:then>
+                                <f:render section="svg" arguments="{image: image}"/>
+                            </f:then>
+                            <f:else>
+                                <f:render section="bitmap" arguments="{image: image}"/>
+                            </f:else>
+                        </f:if>
+                    </f:then>
+                </f:if>
+            </f:else>
+        </f:if>
     </div>
 </f:section>
+
+<f:section name="svg">
+    <f:image image="{image}" class="img-fluid w-100" />
+</f:section>
+
+<f:comment> <!-- <![CDATA[
+    if the hero image is in .container, sizes must be optimized. e.g.
+        sizes="(max-width: 768px) 100vw,
+        (max-width: 1024px) 100vw,
+        (max-width: 1600px) 100vw,
+        (max-width: 1920px) 100vw,
+        2560px"
+    ]]>	--> </f:comment>
+<f:section name="bitmap">
+    <img src="{f:uri.image(image: image, maxWidth: 2560)}"
+         srcset="{f:uri.image(image: image, maxWidth: 768)} 768w, {f:uri.image(image: image, maxWidth: 1024)} 1024w, {f:uri.image(image: image, maxWidth: 1600)} 1600w, {f:uri.image(image: image, maxWidth: 1920)} 1920w, {f:uri.image(image: image, maxWidth: 2560)} 2560w"
+         sizes="100vw"
+         class="img-fluid w-100"
+         alt="{image.alternative}" />
+</f:section>
+
 </body>
 </html>
