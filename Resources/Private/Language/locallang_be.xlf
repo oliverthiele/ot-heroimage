@@ -7,10 +7,25 @@
 		<header/>
 		<body>
 			<trans-unit id="wizard.title" resname="wizard.title">
-				<source>Heroimage</source>
+				<source>Hero image</source>
 			</trans-unit>
 			<trans-unit id="wizard.description" resname="wizard.description">
-				<source>Heroimage with a larger image width than in normal content columns.</source>
+				<source>Image with a larger image width than in normal content columns.</source>
+			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.description" resname="tt_content.ot_layout.description">
+				<source>For images where the text extends to the edge of the image, an additional space can be added to make it flush with the content.</source>
+			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.withoutSpacing" resname="tt_content.ot_layout.withoutSpacing">
+				<source>Without spacing</source>
+			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.withSpacing" resname="tt_content.ot_layout.withSpacing">
+				<source>With spacing</source>
+			</trans-unit>
+			<trans-unit id="tt_content.assets.label" resname="tt_content.assets.label">
+				<source>Hero Image</source>
+			</trans-unit>
+			<trans-unit id="tt_content.image.label" resname="tt_content.image.label">
+				<source>Optional image for small display resolutions</source>
 			</trans-unit>
 		</body>
 	</file>
