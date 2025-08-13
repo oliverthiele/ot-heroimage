@@ -14,9 +14,13 @@
 				<source>Image with a larger image width than in normal content columns.</source>
 				<target>Bild mit einer größeren Bildbreite als bei normalen Content-Spalten.</target>
 			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.label" resname="tt_content.ot_layout.label" approved="yes">
+				<source>Margins</source>
+				<target>Abstände</target>
+			</trans-unit>
 			<trans-unit id="tt_content.ot_layout.description" resname="tt_content.ot_layout.description" approved="yes">
-				<source>For images where the text extends to the edge of the image, an additional space can be added to make it flush with the content.</source>
-				<target>Für Bilder, bei denen der Text bis zum Bildrand geht, kann ein zusätzlicher Abstand hinzugefügt werden, der dann bündig zu den Inhalten ist.</target>
+				<source>For images where the text extends to the edge of the image, a spacing (padding ".p-3") can be added, which is then flush with the following content.</source>
+				<target>Für Bilder, bei denen der Text bis zum Bildrand geht, kann ein Abstand (Padding ".p-3") hinzugefügt werden, der dann bündig zu den nachfolgenden Inhalten ist.</target>
 			</trans-unit>
 			<trans-unit id="tt_content.ot_layout.withoutSpacing" resname="tt_content.ot_layout.withoutSpacing" approved="yes">
 				<source>Without spacing</source>

@@ -12,8 +12,11 @@
 			<trans-unit id="wizard.description" resname="wizard.description">
 				<source>Image with a larger image width than in normal content columns.</source>
 			</trans-unit>
+			<trans-unit id="tt_content.ot_layout.label" resname="tt_content.ot_layout.label">
+				<source>Margins</source>
+			</trans-unit>
 			<trans-unit id="tt_content.ot_layout.description" resname="tt_content.ot_layout.description">
-				<source>For images where the text extends to the edge of the image, an additional space can be added to make it flush with the content.</source>
+				<source>For images where the text extends to the edge of the image, a spacing (padding ".p-3") can be added, which is then flush with the following content.</source>
 			</trans-unit>
 			<trans-unit id="tt_content.ot_layout.withoutSpacing" resname="tt_content.ot_layout.withoutSpacing">
 				<source>Without spacing</source>

@@ -30,6 +30,13 @@ _setup.typoscript_
 @import 'EXT:ot_heroimage/Configuration/TypoScript/setup.typoscript'
 ```
 
+## Changes in v3.1.0
+
+- Site sets are now supported.
+
+- The old constant for the template root directory is changed,
+  if you use the site sets.
+  The new constant is `{$sitekit.frameworks.frontend.directory}`
 
 ## Changes in v3.0.0
 
@@ -45,6 +52,3 @@ _setup.typoscript_
   Texts in images can be aligned flush with the content. The TYPO3 field layout already has layout 1-3 defined,
   so I did not use the TYPO3 field `layout`
 
-## Geplant:
-
-- Unterstützung für Site sets

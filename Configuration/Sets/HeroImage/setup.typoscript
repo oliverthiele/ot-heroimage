@@ -1,0 +1,19 @@
+@import "EXT:ot_heroimage/Configuration/TypoScript/setup.typoscript"
+
+# Overwrite the old constant projectSettings.framework.directory to be compatible with my Sitekit extensions
+
+tt_content {
+  ot_heroimage {
+    templateRootPaths {
+      20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Templates/
+    }
+
+    partialRootPaths {
+      20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Partials/
+    }
+
+    layoutRootPaths {
+      20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Layouts/
+    }
+  }
+}

@@ -22,6 +22,7 @@ tt_content {
         references.fieldName = assets
         references.table = tt_content
       }
+
       20 = files
       20 {
         as = imagesMobile

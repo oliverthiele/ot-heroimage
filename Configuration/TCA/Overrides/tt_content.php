@@ -8,7 +8,6 @@ defined('TYPO3') or die();
 
 call_user_func(
     static function () {
-
         $ll = 'LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:';
 
         ExtensionManagementUtility::addPlugin(
@@ -17,7 +16,7 @@ call_user_func(
                 'description' => $ll . 'wizard.description',
                 'value' => 'ot_heroimage',
                 'icon' => 'ot-heroimage',
-                'group' => 'extras'
+                'group' => 'extras',
             ],
             'CType',
             'ot_heroimage',
@@ -26,7 +25,6 @@ call_user_func(
         $tempColumns = [
             'ot_layout' => [
                 'exclude' => true,
-                'label' => 'Layout',
                 'l10n_mode' => 'exclude',
                 'config' => [
                     'type' => 'select',
@@ -34,16 +32,17 @@ call_user_func(
                     'items' => [
                         [
                             'label' => 'Default',
-                            'value' => ''
+                            'value' => '',
                         ],
                     ],
                     'size' => 1,
                     'maxitems' => 1,
-                ]
+                ],
             ],
         ];
 
-
+        ExtensionManagementUtility::addTCAcolumns('tt_content', $tempColumns);
+        ExtensionManagementUtility::addToAllTCAtypes('tt_content', 'ot_heroimage');
 
         /************************
          * Configure element type
@@ -106,42 +105,23 @@ call_user_func(
                         ],
                     ],
                     'ot_layout' => [
+                        'label' => $ll . 'tt_content.ot_layout.label',
                         'description' => $ll . 'tt_content.ot_layout.description',
                         'config' => [
-                            'type' => 'select',
-                            'renderType' => 'selectSingle',
                             'items' => [
                                 [
                                     'label' => $ll . 'tt_content.ot_layout.withoutSpacing',
-                                    'value' => ''
+                                    'value' => '',
                                 ],
                                 [
                                     'label' => $ll . 'tt_content.ot_layout.withSpacing',
-                                    'value' => 'withSpacing'
+                                    'value' => 'withSpacing',
                                 ],
                             ],
-                        ]
-                    ]
+                        ],
+                    ],
                 ],
             ]
         );
     }
 );
-//'ot_layout' => [
-//        'config' => [
-//            'type' => 'select',
-//            'renderType' => 'selectSingle',
-//            'items' => [
-//                [
-//                    'label' => 'Bild links (50% Bild - 50% Text)',
-//                    'value' => '',
-//                ],
-//                [
-//                    'label' => 'Bild rechts (50% Text - 50% Bild)',
-//                    'value' => '50_text-50_image',
-//                ],
-//            ],
-//            'size' => 1,
-//            'maxitems' => 1,
-//        ],
-//    ],
