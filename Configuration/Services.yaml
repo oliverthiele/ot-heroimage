@@ -1,0 +1,13 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  OliverThiele\OtHeroimage\:
+    resource: '../Classes/*'
+
+  OliverThiele\OtHeroimage\DataProcessing\HeroImageConfigurationProcessor:
+    tags:
+      - name: 'data.processor'
+        identifier: 'hero-image-configuration'
