@@ -1,0 +1,11 @@
+# cat=Heroimage/mobile/a1; type=int[600-1000]; label=Max. Mobile Hero Image Width:
+mobileWidth = 768
+
+# cat=Heroimage/mobile/a2; type=int[200-800]; label=Max. Mobile Hero Image Height:
+mobileHeight = 576
+
+# cat=Heroimage/desktop/b1; type=int[600-2560]; label=Max. Desktop Hero Image Width:
+desktopWidth = 2560
+
+# cat=Heroimage/desktop/b2; type=int[200-800]; label=Max. Desktop Hero Image Height:
+desktopHeight = 450

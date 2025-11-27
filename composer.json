@@ -25,6 +25,11 @@
 	},
 	"conflict": {
 	},
+	"autoload": {
+		"psr-4": {
+			"OliverThiele\\OtHeroimage\\": "Classes/"
+		}
+	},
 	"extra": {
 		"typo3/cms": {
 			"extension-key": "ot_heroimage"

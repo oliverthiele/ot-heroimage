@@ -12,9 +12,9 @@
 
 <f:section name="Main">
     <div class="ot-heroimage{f:if(condition: '{data.ot_layout} == \'withSpacing\'', then: ' p-3')}">
-         <f:comment><!-- Image definition for Desktop and Mobile --></f:comment>
-        <f:if condition="{files.0}">
-            <f:variable name="image" value="{files.0}"/>
+        <f:comment><!-- Image definition for Desktop and Mobile --></f:comment>
+        <f:if condition="{imagesDesktop.0}">
+            <f:variable name="imageDesktop" value="{imagesDesktop.0}"/>
         </f:if>
         <f:if condition="{imagesMobile.0}">
             <f:variable name="imageMobile" value="{imagesMobile.0}"/>
@@ -22,39 +22,41 @@
         <f:comment><!-- Desktop & Mobile View --></f:comment>
         <f:if condition="{imageMobile}">
             <f:then>
-                <f:comment><!-- Mobile view--></f:comment>
+                <f:comment><!-- Mobile view (< 768px) --></f:comment>
                 <div class="d-md-none">
-                    <f:if condition="{image.originalFile.extension} == 'svg'">
+                    <f:if condition="{imageMobile.originalFile.extension} == 'svg'">
                         <f:then>
                             <f:render section="svg" arguments="{image: imageMobile}"/>
                         </f:then>
                         <f:else>
-                            <f:render section="bitmap" arguments="{image: imageMobile}"/>
+                            <f:render section="bitmapMobile" arguments="{image: imageMobile, width: heroImageSettings.mobile.width, height: heroImageSettings.mobile.height}"/>
                         </f:else>
                     </f:if>
                 </div>
-                <f:comment><!-- Desktop view--></f:comment>
-                <div class="d-none d-md-block">
-                    <f:if condition="{image.originalFile.extension} == 'svg'">
-                        <f:then>
-                            <f:render section="svg" arguments="{image: image}"/>
-                        </f:then>
-                        <f:else>
-                            <f:render section="bitmap" arguments="{image: image}"/>
-                        </f:else>
-                    </f:if>
-                </div>
+                <f:comment><!-- Desktop view (>= 768px) --></f:comment>
+                <f:if condition="{imageDesktop}">
+                    <div class="d-none d-md-block">
+                        <f:if condition="{imageDesktop.originalFile.extension} == 'svg'">
+                            <f:then>
+                                <f:render section="svg" arguments="{image: imageDesktop}"/>
+                            </f:then>
+                            <f:else>
+                                <f:render section="bitmapDesktop" arguments="{image: imageDesktop, width: heroImageSettings.desktop.width, height: heroImageSettings.desktop.height}"/>
+                            </f:else>
+                        </f:if>
+                    </div>
+                </f:if>
             </f:then>
             <f:else>
                 <f:comment><!-- Only desktop image (if no mobile picture is available) --></f:comment>
-                <f:if condition="{image}">
+                <f:if condition="{imageDesktop}">
                     <f:then>
-                        <f:if condition="{image.originalFile.extension} == 'svg'">
+                        <f:if condition="{imageDesktop.originalFile.extension} == 'svg'">
                             <f:then>
-                                <f:render section="svg" arguments="{image: image}"/>
+                                <f:render section="svg" arguments="{image: imageDesktop}"/>
                             </f:then>
                             <f:else>
-                                <f:render section="bitmap" arguments="{image: image}"/>
+                                <f:render section="bitmapFull" arguments="{image: imageDesktop, width: heroImageSettings.desktop.width, height: heroImageSettings.desktop.height}"/>
                             </f:else>
                         </f:if>
                     </f:then>
@@ -65,24 +67,153 @@
 </f:section>
 
 <f:section name="svg">
-    <f:image image="{image}" class="img-fluid w-100" />
+    <f:image image="{image}" class="img-fluid w-100"/>
 </f:section>
 
-<f:comment> <!-- <![CDATA[
-    if the hero image is in .container, sizes must be optimized. e.g.
-        sizes="(max-width: 768px) 100vw,
-        (max-width: 1024px) 100vw,
-        (max-width: 1600px) 100vw,
-        (max-width: 1920px) 100vw,
-        2560px"
-    ]]>	--> </f:comment>
-<f:section name="bitmap">
-    <img src="{f:uri.image(image: image, maxWidth: 2560)}"
-         srcset="{f:uri.image(image: image, maxWidth: 768)} 768w, {f:uri.image(image: image, maxWidth: 1024)} 1024w, {f:uri.image(image: image, maxWidth: 1600)} 1600w, {f:uri.image(image: image, maxWidth: 1920)} 1920w, {f:uri.image(image: image, maxWidth: 2560)} 2560w"
-         sizes="100vw"
-         class="img-fluid w-100"
-         alt="{image.alternative}" />
+<f:comment><!-- Mobile bitmap section: Breakpoints 480, 768 | Crop: heroMobile --></f:comment>
+<f:section name="bitmapMobile">
+    <f:variable name="origWidth" value="{image.originalFile.properties.width}"/>
+    <f:variable name="breakpoints" value="{480: 480, 768: 768}"/>
+
+    <f:comment><!-- Build srcset string with all breakpoints (filter by original width done via iteration) --></f:comment>
+    <f:variable name="srcsetString" value=""/>
+    <f:for each="{breakpoints}" as="bp" key="bpWidth">
+        <f:if condition="{bpWidth} <= {origWidth}">
+            <f:variable name="srcsetString"
+                        value="{srcsetString}{f:uri.image(image: image, maxWidth: bpWidth, cropVariant: 'heroMobile')} {bpWidth}w, "/>
+        </f:if>
+    </f:for>
+    <f:variable name="srcsetString" value="{srcsetString -> f:format.trim(characters: ', ')}"/>
+
+    <f:comment><!-- Determine max width for src (smaller of configured width or original) --></f:comment>
+    <f:variable name="maxWidth" value="{f:if(condition: '{width} < {origWidth}', then: width, else: origWidth)}"/>
+
+    <f:comment><!-- Alt text: use alternative if available, otherwise empty for decorative images --></f:comment>
+    <f:variable name="altText" value="{f:if(condition: image.alternative, then: image.alternative, else: '')}"/>
+
+    <f:if condition="{srcsetString}">
+        <f:then>
+            <img
+                src="{f:uri.image(image: image, maxWidth: maxWidth, cropVariant: 'heroMobile')}"
+                srcset="{srcsetString}"
+                sizes="100vw"
+                width="{width}"
+                height="{height}"
+                class="img-fluid w-100"
+                fetchpriority="high"
+                loading="eager"
+                alt="{altText}"/>
+        </f:then>
+        <f:else>
+            <img
+                src="{f:uri.image(image: image, maxWidth: maxWidth, cropVariant: 'heroMobile')}"
+                sizes="100vw"
+                width="{width}"
+                height="{height}"
+                class="img-fluid w-100"
+                fetchpriority="high"
+                loading="eager"
+                alt="{altText}"/>
+        </f:else>
+    </f:if>
 </f:section>
+
+<f:comment><!-- Desktop bitmap section: Breakpoints 1280, 1920, 2560 | Crop: heroDesktop --></f:comment>
+<f:section name="bitmapDesktop">
+    <f:variable name="origWidth" value="{image.originalFile.properties.width}"/>
+    <f:variable name="breakpoints" value="{1280: 1280, 1920: 1920, 2560: 2560}"/>
+
+    <f:comment><!-- Build srcset string with all breakpoints (filter by original width done via iteration) --></f:comment>
+    <f:variable name="srcsetString" value=""/>
+    <f:for each="{breakpoints}" as="bp" key="bpWidth">
+        <f:if condition="{bpWidth} <= {origWidth}">
+            <f:variable name="srcsetString"
+                        value="{srcsetString}{f:uri.image(image: image, maxWidth: bpWidth, cropVariant: 'heroDesktop')} {bpWidth}w, "/>
+        </f:if>
+    </f:for>
+    <f:variable name="srcsetString" value="{srcsetString -> f:format.trim(characters: ', ')}"/>
+
+    <f:comment><!-- Determine max width for src (smaller of configured width or original) --></f:comment>
+    <f:variable name="maxWidth" value="{f:if(condition: '{width} < {origWidth}', then: width, else: origWidth)}"/>
+
+    <f:comment><!-- Alt text: use alternative if available, otherwise empty for decorative images --></f:comment>
+    <f:variable name="altText" value="{f:if(condition: image.alternative, then: image.alternative, else: '')}"/>
+
+    <f:if condition="{srcsetString}">
+        <f:then>
+            <img
+                src="{f:uri.image(image: image, maxWidth: maxWidth, cropVariant: 'heroDesktop')}"
+                srcset="{srcsetString}"
+                sizes="100vw"
+                width="{width}"
+                height="{height}"
+                class="img-fluid w-100"
+                fetchpriority="high"
+                loading="eager"
+                alt="{altText}"/>
+        </f:then>
+        <f:else>
+            <img
+                src="{f:uri.image(image: image, maxWidth: maxWidth, cropVariant: 'heroDesktop')}"
+                sizes="100vw"
+                width="{width}"
+                height="{height}"
+                class="img-fluid w-100"
+                fetchpriority="high"
+                loading="eager"
+                alt="{altText}"/>
+        </f:else>
+    </f:if>
+</f:section>
+
+<f:comment><!-- Full bitmap section: All breakpoints 480, 768, 1280, 1920, 2560 | Crop: heroDesktop --></f:comment>
+<f:section name="bitmapFull">
+    <f:variable name="origWidth" value="{image.originalFile.properties.width}"/>
+    <f:variable name="breakpoints" value="{480: 480, 768: 768, 1280: 1280, 1920: 1920, 2560: 2560}"/>
+
+    <f:comment><!-- Build srcset string with all breakpoints (filter by original width done via iteration) --></f:comment>
+    <f:variable name="srcsetString" value=""/>
+    <f:for each="{breakpoints}" as="bp" key="bpWidth">
+        <f:if condition="{bpWidth} <= {origWidth}">
+            <f:variable name="srcsetString"
+                        value="{srcsetString}{f:uri.image(image: image, maxWidth: bpWidth, cropVariant: 'heroDesktop')} {bpWidth}w, "/>
+        </f:if>
+    </f:for>
+    <f:variable name="srcsetString" value="{srcsetString -> f:format.trim(characters: ', ')}"/>
+
+    <f:comment><!-- Determine max width for src (smaller of configured width or original) --></f:comment>
+    <f:variable name="maxWidth" value="{f:if(condition: '{width} < {origWidth}', then: width, else: origWidth)}"/>
+
+    <f:comment><!-- Alt text: use alternative if available, otherwise empty for decorative images --></f:comment>
+    <f:variable name="altText" value="{f:if(condition: image.alternative, then: image.alternative, else: '')}"/>
+
+    <f:if condition="{srcsetString}">
+        <f:then>
+            <img
+                src="{f:uri.image(image: image, maxWidth: maxWidth, cropVariant: 'heroDesktop')}"
+                srcset="{srcsetString}"
+                sizes="100vw"
+                width="{width}"
+                height="{height}"
+                class="img-fluid w-100"
+                fetchpriority="high"
+                loading="eager"
+                alt="{altText}"/>
+        </f:then>
+        <f:else>
+            <img
+                src="{f:uri.image(image: image, maxWidth: maxWidth, cropVariant: 'heroDesktop')}"
+                sizes="100vw"
+                width="{width}"
+                height="{height}"
+                class="img-fluid w-100"
+                fetchpriority="high"
+                loading="eager"
+                alt="{altText}"/>
+        </f:else>
+    </f:if>
+</f:section>
+
 
 </body>
 </html>

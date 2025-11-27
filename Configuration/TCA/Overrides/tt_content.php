@@ -2,7 +2,9 @@
 
 declare(strict_types=1);
 
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 defined('TYPO3') or die();
 
@@ -51,6 +53,16 @@ call_user_func(
             'after:image'
         );
 
+        $extensionSettings = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ot_heroimage');
+
+        $mobileWidth = (int)($extensionSettings['mobileWidth'] ?? 768);
+        $mobileHeight = (int)($extensionSettings['mobileHeight'] ?? 576);
+        $desktopWidth = (int)($extensionSettings['desktopWidth'] ?? 2560);
+        $desktopHeight = (int)($extensionSettings['desktopHeight'] ?? 450);
+
+        $desktopRatio = $desktopWidth > 0 && $desktopHeight > 0 ? $desktopWidth / $desktopHeight : 0;
+        $mobileRatio = $mobileWidth > 0 && $mobileHeight > 0 ? $mobileWidth / $mobileHeight : 0;
+
         /************************
          * Configure element type
          ************************/
@@ -68,6 +80,45 @@ call_user_func(
                             'allowed' => 'jpg,jpeg,png,gif,svg',
                             'overrideChildTca' => [
                                 'columns' => [
+                                    'crop' => [
+                                        'config' => [
+                                            'cropVariants' => [
+                                                'default' => [
+                                                    'disabled' => true,
+                                                ],
+                                                'free' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '1:1' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '16:9' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '4:3' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '3:2' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '3:4' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '2:3' => [
+                                                    'disabled' => true,
+                                                ],
+                                                'heroDesktop' => [
+                                                    'title' => 'Hero Desktop',
+                                                    'allowedAspectRatios' => [
+                                                        'heroDesktop' => [
+                                                            'title' => 'Hero Desktop (' . $desktopWidth . 'x' . $desktopHeight . ')',
+                                                            'value' => $desktopRatio
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
                                     'uid_local' => [
                                         'config' => [
                                             'appearance' => [
@@ -87,6 +138,45 @@ call_user_func(
                             'allowed' => 'jpg,jpeg,png,gif,svg',
                             'overrideChildTca' => [
                                 'columns' => [
+                                    'crop' => [
+                                        'config' => [
+                                            'cropVariants' => [
+                                                'default' => [
+                                                    'disabled' => true,
+                                                ],
+                                                'free' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '1:1' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '16:9' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '4:3' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '3:2' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '3:4' => [
+                                                    'disabled' => true,
+                                                ],
+                                                '2:3' => [
+                                                    'disabled' => true,
+                                                ],
+                                                'heroMobile' => [
+                                                    'title' => 'Hero Mobile',
+                                                    'allowedAspectRatios' => [
+                                                        'heroMobile' => [
+                                                            'title' => 'Hero Mobile (' . $mobileWidth . 'x' . $mobileHeight . ')',
+                                                            'value' => $mobileRatio,
+                                                        ],
+                                                    ],
+                                                ],
+                                            ],
+                                        ],
+                                    ],
                                     'uid_local' => [
                                         'config' => [
                                             'appearance' => [

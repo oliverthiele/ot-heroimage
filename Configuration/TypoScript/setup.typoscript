@@ -18,7 +18,7 @@ tt_content {
     dataProcessing {
       10 = files
       10 {
-        as = files
+        as = imagesDesktop
         references.fieldName = assets
         references.table = tt_content
       }
@@ -28,6 +28,11 @@ tt_content {
         as = imagesMobile
         references.fieldName = image
         references.table = tt_content
+      }
+
+      1764280745 = hero-image-configuration
+      1764280745 {
+        as = heroImageSettings
       }
     }
   }
