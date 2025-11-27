@@ -44,10 +44,10 @@ class HeroImageConfigurationProcessor implements DataProcessorInterface
      * Process data to add hero image configuration settings
      *
      * @param ContentObjectRenderer $cObj The data of the content element or page
-     * @param array $contentObjectConfiguration The configuration of Content Object
-     * @param array $processorConfiguration The configuration of this processor
-     * @param array $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
-     * @return array the processed data as key/value store
+     * @param array<int|string, mixed> $contentObjectConfiguration The configuration of Content Object
+     * @param array<int|string, mixed> $processorConfiguration The configuration of this processor
+     * @param array<int|string, mixed> $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
+     * @return array<int|string, mixed> the processed data as key/value store
      */
     public function process(
         ContentObjectRenderer $cObj,
