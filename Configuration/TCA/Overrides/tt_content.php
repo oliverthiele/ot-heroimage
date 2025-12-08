@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use OliverThiele\OtSitekitbase\Backend\Preview\GenericPreviewRenderer;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -208,5 +209,11 @@ call_user_func(
                 ],
             ]
         );
+        if (
+            ExtensionManagementUtility::isLoaded('ot_sitekitbase') &&
+            class_exists(GenericPreviewRenderer::class)
+        ) {
+            $GLOBALS['TCA']['tt_content']['types']['ot_heroimage']['previewRenderer'] = GenericPreviewRenderer::class;
+        }
     }
 );

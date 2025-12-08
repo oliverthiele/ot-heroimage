@@ -46,7 +46,8 @@ class HeroImageConfigurationProcessor implements DataProcessorInterface
      * @param ContentObjectRenderer $cObj The data of the content element or page
      * @param array<int|string, mixed> $contentObjectConfiguration The configuration of Content Object
      * @param array<int|string, mixed> $processorConfiguration The configuration of this processor
-     * @param array<int|string, mixed> $processedData Key/value store of processed data (e.g. to be passed to a Fluid View)
+     * @param array<int|string, mixed> $processedData Key/value store of processed data
+     *                                                (e.g. to be passed to a Fluid View)
      * @return array<int|string, mixed> the processed data as key/value store
      */
     public function process(
@@ -58,7 +59,9 @@ class HeroImageConfigurationProcessor implements DataProcessorInterface
         $targetVariableName = $cObj->stdWrapValue('as', $processorConfiguration, 'heroImageSettings');
 
         try {
-            $extensionSettings = GeneralUtility::makeInstance(ExtensionConfiguration::class)->get('ot_heroimage');
+            $extensionSettings = GeneralUtility::makeInstance(
+                ExtensionConfiguration::class
+            )->get('ot_heroimage');
 
             $processedData[$targetVariableName] = [
                 'mobile' => [
@@ -71,7 +74,7 @@ class HeroImageConfigurationProcessor implements DataProcessorInterface
                 ],
             ];
         } catch (\Exception $e) {
-            // Fallback to default values if extension configuration cannot be read
+            // Fallback to default values if the extension configuration cannot be read
             $processedData[$targetVariableName] = [
                 'mobile' => [
                     'width' => 768,
