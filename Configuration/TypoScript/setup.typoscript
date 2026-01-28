@@ -1,5 +1,5 @@
 tt_content {
-  ot_heroimage =< lib.contentElement
+  ot_heroimage =< lib.sitekitContentElement
   ot_heroimage {
     templateName = OtHeroimage
 
@@ -37,3 +37,59 @@ tt_content {
     }
   }
 }
+
+# Overwrite the old constant projectSettings.framework.directory to be compatible with my Sitekit extensions
+[isLoaded('ot_sitekitbase')]
+  tt_content {
+    ot_heroimage {
+      templateRootPaths {
+        20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Templates/
+      }
+
+      partialRootPaths {
+        20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Partials/
+      }
+
+      layoutRootPaths {
+        20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Layouts/
+      }
+    }
+  }
+[END]
+
+
+# For formatted headers, the "ot-ceheader" extension can be integrated.
+[isLoaded('ot_ceheader')]
+  tt_content {
+    ot_heroimage {
+      partialRootPaths {
+        14 = EXT:ot_ceheader/Resources/Private/Bootstrap5/Partials/
+      }
+    }
+  }
+[END]
+
+# For buttons below the text, the "ot-irrebuttons" extension can be integrated.
+[isLoaded('ot_irrebuttons')]
+  tt_content {
+    ot_heroimage {
+      partialRootPaths {
+        15 = EXT:ot_irrebuttons/Resources/Private/Bootstrap5/Partials/
+      }
+
+      dataProcessing {
+        1701706720 = TYPO3\CMS\Frontend\DataProcessing\DatabaseQueryProcessor
+        1701706720 {
+          if.isTrue.field = tx_otirrebuttons_domain_model_buttons
+          table = tx_otirrebuttons_domain_model_button
+          where.data = field:_ORIG_uid // field:uid
+          where.intval = 1
+          where.wrap = tx_otirrebuttons_domain_model_button.parent_id=|
+
+          orderBy = sorting
+          as = irreButtons
+        }
+      }
+    }
+  }
+[END]

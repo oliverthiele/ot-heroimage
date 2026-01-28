@@ -131,6 +131,16 @@ Example: With default settings (mobile: 768x576, desktop: 2560x450):
 
 ## Changelog
 
+### Changes in v4.1.0
+
+- Support for formatted headings with the "ot-ceheader" extension
+  as an overlay above the image
+- Support for buttons with icons with the "ot-irrebuttons" extension
+- For installations with my SiteKit extension, the
+  dynamic template path is automatically updated
+- The new condition "isLoaded" checks whether one of the extensions is installed
+  and only then integrates the necessary TypoScript code
+
 ### Changes in v4.0.0 (Breaking Changes)
 
 **Breaking Changes:**
