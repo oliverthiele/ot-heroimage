@@ -12,57 +12,68 @@
 
 <f:section name="Main">
     <div class="ot-heroimage{f:if(condition: '{data.ot_layout} == \'withSpacing\'', then: ' p-3')}">
-        <f:comment><!-- Image definition for Desktop and Mobile --></f:comment>
-        <f:if condition="{imagesDesktop.0}">
-            <f:variable name="imageDesktop" value="{imagesDesktop.0}"/>
-        </f:if>
-        <f:if condition="{imagesMobile.0}">
-            <f:variable name="imageMobile" value="{imagesMobile.0}"/>
-        </f:if>
-        <f:comment><!-- Desktop & Mobile View --></f:comment>
-        <f:if condition="{imageMobile}">
-            <f:then>
-                <f:comment><!-- Mobile view (< 768px) --></f:comment>
-                <div class="d-md-none">
-                    <f:if condition="{imageMobile.originalFile.extension} == 'svg'">
-                        <f:then>
-                            <f:render section="svg" arguments="{image: imageMobile}"/>
-                        </f:then>
-                        <f:else>
-                            <f:render section="bitmapMobile" arguments="{image: imageMobile, width: heroImageSettings.mobile.width, height: heroImageSettings.mobile.height}"/>
-                        </f:else>
-                    </f:if>
-                </div>
-                <f:comment><!-- Desktop view (>= 768px) --></f:comment>
-                <f:if condition="{imageDesktop}">
-                    <div class="d-none d-md-block">
-                        <f:if condition="{imageDesktop.originalFile.extension} == 'svg'">
+        <div class="image-container">
+            <f:comment><!-- Image definition for Desktop and Mobile --></f:comment>
+            <f:if condition="{imagesDesktop.0}">
+                <f:variable name="imageDesktop" value="{imagesDesktop.0}"/>
+            </f:if>
+            <f:if condition="{imagesMobile.0}">
+                <f:variable name="imageMobile" value="{imagesMobile.0}"/>
+            </f:if>
+            <f:comment><!-- Desktop & Mobile View --></f:comment>
+            <f:if condition="{imageMobile}">
+                <f:then>
+                    <f:comment><!-- Mobile view (< 768px) --></f:comment>
+                    <div class="ot-heroimage-text-overlay-mobile">
+                        <f:if condition="{imageMobile.originalFile.extension} == 'svg'">
                             <f:then>
-                                <f:render section="svg" arguments="{image: imageDesktop}"/>
+                                <f:render section="svg" arguments="{image: imageMobile}"/>
                             </f:then>
                             <f:else>
-                                <f:render section="bitmapDesktop" arguments="{image: imageDesktop, width: heroImageSettings.desktop.width, height: heroImageSettings.desktop.height}"/>
+                                <f:render section="bitmapMobile" arguments="{image: imageMobile, width: heroImageSettings.mobile.width, height: heroImageSettings.mobile.height}"/>
                             </f:else>
                         </f:if>
                     </div>
+                    <f:comment><!-- Desktop view (>= 768px) --></f:comment>
+                    <f:if condition="{imageDesktop}">
+                        <div class="ot-heroimage-text-overlay-desktop">
+                            <f:if condition="{imageDesktop.originalFile.extension} == 'svg'">
+                                <f:then>
+                                    <f:render section="svg" arguments="{image: imageDesktop}"/>
+                                </f:then>
+                                <f:else>
+                                    <f:render section="bitmapDesktop" arguments="{image: imageDesktop, width: heroImageSettings.desktop.width, height: heroImageSettings.desktop.height}"/>
+                                </f:else>
+                            </f:if>
+                        </div>
+                    </f:if>
+                </f:then>
+                <f:else>
+                    <f:comment><!-- Only desktop image (if no mobile picture is available) --></f:comment>
+                    <f:if condition="{imageDesktop}">
+                        <f:then>
+                            <f:if condition="{imageDesktop.originalFile.extension} == 'svg'">
+                                <f:then>
+                                    <f:render section="svg" arguments="{image: imageDesktop}"/>
+                                </f:then>
+                                <f:else>
+                                    <f:render section="bitmapFull" arguments="{image: imageDesktop, width: heroImageSettings.desktop.width, height: heroImageSettings.desktop.height}"/>
+                                </f:else>
+                            </f:if>
+                        </f:then>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </div>
+
+        <div class="text-overlay-container">
+            <div class="container">
+                <f:render partial="Header/All" arguments="{data: data}"/>
+                <f:if condition="{irreButtons}">
+                    <f:render partial="IrreButtons" section="Main" arguments="{data : data, irreButtons : irreButtons}"/>
                 </f:if>
-            </f:then>
-            <f:else>
-                <f:comment><!-- Only desktop image (if no mobile picture is available) --></f:comment>
-                <f:if condition="{imageDesktop}">
-                    <f:then>
-                        <f:if condition="{imageDesktop.originalFile.extension} == 'svg'">
-                            <f:then>
-                                <f:render section="svg" arguments="{image: imageDesktop}"/>
-                            </f:then>
-                            <f:else>
-                                <f:render section="bitmapFull" arguments="{image: imageDesktop, width: heroImageSettings.desktop.width, height: heroImageSettings.desktop.height}"/>
-                            </f:else>
-                        </f:if>
-                    </f:then>
-                </f:if>
-            </f:else>
-        </f:if>
+            </div>
+        </div>
     </div>
 </f:section>
 

@@ -113,7 +113,7 @@ call_user_func(
                                                     'allowedAspectRatios' => [
                                                         'heroDesktop' => [
                                                             'title' => 'Hero Desktop (' . $desktopWidth . 'x' . $desktopHeight . ')',
-                                                            'value' => $desktopRatio
+                                                            'value' => $desktopRatio,
                                                         ],
                                                     ],
                                                 ],
@@ -214,6 +214,14 @@ call_user_func(
             class_exists(GenericPreviewRenderer::class)
         ) {
             $GLOBALS['TCA']['tt_content']['types']['ot_heroimage']['previewRenderer'] = GenericPreviewRenderer::class;
+        }
+
+        if (ExtensionManagementUtility::isLoaded('ot_irrebuttons')) {
+            $GLOBALS['TCA']['tt_content']['types']['ot_heroimage']['showitem'] = str_replace(
+                '--palette--;;headers,',
+                '--palette--;;headers,--palette--;;irreButtons,tx_otirrebuttons_domain_model_buttons,',
+                $GLOBALS['TCA']['tt_content']['types']['ot_heroimage']['showitem']
+            );
         }
     }
 );
