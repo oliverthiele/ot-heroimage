@@ -1,0 +1,4 @@
+elements:
+  - ctype: ot_heroimage
+    groups: [group_hero]
+    grid: { minCols: 12, requiresFullWidth: true }
