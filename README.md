@@ -131,6 +131,14 @@ Example: With default settings (mobile: 768x576, desktop: 2560x450):
 
 ## Changelog
 
+### Changes in v4.1.3
+
+- Fix: Prevent empty overlay containers in hero image template
+
+### Changes in v4.1.1 / v4.1.2
+
+- Feature: SiteKit configuration for CE Heroimage element
+
 ### Changes in v4.1.0
 
 - Support for formatted headings with the "ot-ceheader" extension
