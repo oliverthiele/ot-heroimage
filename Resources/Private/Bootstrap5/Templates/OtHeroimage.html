@@ -66,14 +66,18 @@
             </f:if>
         </div>
 
-        <div class="text-overlay-container">
-            <div class="container">
-                <f:render partial="Header/All" arguments="{data: data}"/>
-                <f:if condition="{irreButtons}">
-                    <f:render partial="IrreButtons" section="Main" arguments="{data : data, irreButtons : irreButtons}"/>
-                </f:if>
+        <f:variable name="textOverlayContent"><f:spaceless><f:render partial="Header/All" arguments="{data: data}"/></f:spaceless></f:variable>
+        <f:if condition="{textOverlayContent} != ''">
+            <div class="text-overlay-container">
+                <div class="container">
+                    {textOverlayContent -> f:format.raw()}
+                    <f:if condition="{irreButtons}">
+                        <f:render partial="IrreButtons" section="Main" arguments="{data : data, irreButtons : irreButtons}"/>
+                    </f:if>
+                </div>
             </div>
-        </div>
+        </f:if>
+
     </div>
 </f:section>
 
