@@ -1,6 +1,14 @@
 // Example:
+@import "bootstrap/scss/mixins/_breakpoints.scss";
+
 .main-content main > .frame-type-ot_heroimage:first-child {
     margin-top: -30px;
+}
+
+// Hide desktop image container by default (mobile-first).
+// Must be at root level to match specificity of the media-breakpoint-up(md) rule below.
+.ot-heroimage-text-overlay-desktop {
+    display: none;
 }
 
 .ot-heroimage {
@@ -14,10 +22,6 @@
         left: 50%; // .start-50
         transform: translate(-50%, -50%); // .translate-middle
         width: 100%;
-
-        .ot-heroimage-text-overlay-desktop {
-            display: none;
-        }
 
         .ot-ceheader-subheader {
             font-size: 50%;
@@ -54,6 +58,3 @@
         pointer-events: none;
     }
 }
-
-;
-
