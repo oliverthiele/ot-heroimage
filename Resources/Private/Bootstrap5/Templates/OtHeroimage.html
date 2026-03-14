@@ -11,7 +11,16 @@
 <f:section name="Header"/>
 
 <f:section name="Main">
-    <div class="ot-heroimage{f:if(condition: '{data.ot_layout} == \'withSpacing\'', then: ' p-3')}">
+    <f:if condition="{settings.sitekit.layout.gutterSize} != ''">
+        <f:then>
+            <f:variable name="padding" value="{settings.sitekit.layout.gutterSize}"/>
+        </f:then>
+        <f:else>
+            <f:variable name="padding" value="3"/>
+        </f:else>
+    </f:if>
+
+    <div id="ce{data.uid}" class="ot-heroimage{f:if(condition: '{data.ot_layout} == \'withSpacing\'', then: ' p-{padding}')}">
         <div class="image-container">
             <f:comment><!-- Image definition for Desktop and Mobile --></f:comment>
             <f:if condition="{imagesDesktop.0}">
