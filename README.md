@@ -33,7 +33,7 @@ Full-width hero image content element for TYPO3 v13 and v14, optimised for Core 
 |------------------------------------|----------------|
 | TYPO3                              | ^13.4 \| ^14.3 |
 | PHP                                | >=8.3          |
-| oliverthiele/ot-irrebuttons        | ^3.2.9         |
+| oliverthiele/ot-irrebuttons        | ^4.0           |
 
 ---
 
