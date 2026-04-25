@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.0] — 2026-04-25
+
+### Added
+
+- TYPO3 v14.3 support (`^13.4||^14.3`)
+- `oliverthiele/ot-irrebuttons ^3.2.9` as required dependency
+
+### Changed
+
+- Raise PHP minimum constraint to `>=8.3`
+- Replace `DatabaseQueryProcessor` with `ot-irrebuttons-processor` in TypoScript
+
+---
+
 ## [4.1.4] — 2026-03-14
 
 ### Fixed
