@@ -21,8 +21,6 @@ call_user_func(
                 'icon' => 'ot-heroimage',
                 'group' => 'extras',
             ],
-            'CType',
-            'ot_heroimage',
         );
 
         // Basis configuration of the field `ot_layouts` (used in other extensions)
