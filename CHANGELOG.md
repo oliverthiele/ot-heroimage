@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [5.0.2] — 2026-05-22
+
+### Fixed
+
+- Remove obsolete `addPlugin()` arguments (`'CType'`, `'ot_heroimage'`) that were misinterpreted as `$flexForm` parameter in TYPO3 v14, causing "Data structure identifier must be set" error when opening the content element in the backend
+
+---
+
 ## [5.0.1] — 2026-04-25
 
 ### Changed
