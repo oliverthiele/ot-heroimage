@@ -208,8 +208,8 @@ call_user_func(
             ]
         );
         if (
-            ExtensionManagementUtility::isLoaded('ot_sitekitbase') &&
-            class_exists(GenericPreviewRenderer::class)
+            ExtensionManagementUtility::isLoaded('ot_sitekitbase')
+            && class_exists(GenericPreviewRenderer::class)
         ) {
             $GLOBALS['TCA']['tt_content']['types']['ot_heroimage']['previewRenderer'] = GenericPreviewRenderer::class;
         }
