@@ -1,35 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en"
-		  datatype="plaintext"
-		  original="EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf"
-		  date="2023-10-16T23:47:46Z" product-name="ot-heroimage">
-		<header/>
-		<body>
-			<trans-unit id="wizard.title" resname="wizard.title">
-				<source>Hero image</source>
-			</trans-unit>
-			<trans-unit id="wizard.description" resname="wizard.description">
-				<source>Image with a larger image width than in normal content columns.</source>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.label" resname="tt_content.ot_layout.label">
-				<source>Margins</source>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.description" resname="tt_content.ot_layout.description">
-				<source>For images where the text extends to the edge of the image, a margin can be added that is flush with the subsequent content.</source>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.withoutSpacing" resname="tt_content.ot_layout.withoutSpacing">
-				<source>Without spacing</source>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.withSpacing" resname="tt_content.ot_layout.withSpacing">
-				<source>With spacing</source>
-			</trans-unit>
-			<trans-unit id="tt_content.assets.label" resname="tt_content.assets.label">
-				<source>Hero Image</source>
-			</trans-unit>
-			<trans-unit id="tt_content.image.label" resname="tt_content.image.label">
-				<source>Optional image for small display resolutions</source>
-			</trans-unit>
-		</body>
-	</file>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en">
+  <file id="ot-heroimage-locallang-be"
+        original="EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf">
+    <unit id="wizard.title">
+      <segment>
+        <source>Hero image</source>
+      </segment>
+    </unit>
+    <unit id="wizard.description">
+      <segment>
+        <source>Image with a larger image width than in normal content columns.</source>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.label">
+      <segment>
+        <source>Margins</source>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.description">
+      <segment>
+        <source>For images where the text extends to the edge of the image, a margin can be added that is flush with the subsequent content.</source>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.withoutSpacing">
+      <segment>
+        <source>Without spacing</source>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.withSpacing">
+      <segment>
+        <source>With spacing</source>
+      </segment>
+    </unit>
+    <unit id="tt_content.assets.label">
+      <segment>
+        <source>Hero Image</source>
+      </segment>
+    </unit>
+    <unit id="tt_content.image.label">
+      <segment>
+        <source>Optional image for small display resolutions</source>
+      </segment>
+    </unit>
+  </file>
 </xliff>

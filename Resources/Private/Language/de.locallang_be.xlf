@@ -1,43 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-	<file source-language="en" target-language="de"
-		  datatype="plaintext"
-		  original="EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf"
-		  date="2023-10-16T23:47:46Z" product-name="ot-heroimage">
-		<header/>
-		<body>
-			<trans-unit id="wizard.title" resname="wizard.title" approved="yes">
-				<source>Hero image</source>
-				<target>Hero image</target>
-			</trans-unit>
-			<trans-unit id="wizard.description" resname="wizard.description" approved="yes">
-				<source>Image with a larger image width than in normal content columns.</source>
-				<target>Bild mit einer größeren Bildbreite als bei normalen Content-Spalten.</target>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.label" resname="tt_content.ot_layout.label" approved="yes">
-				<source>Margins</source>
-				<target>Abstände</target>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.description" resname="tt_content.ot_layout.description" approved="yes">
-				<source>For images where the text extends to the edge of the image, a margin can be added that is flush with the subsequent content.</source>
-				<target>Für Bilder, bei denen der Text bis zum Bildrand geht, kann ein Abstand hinzugefügt werden, der bündig zu den nachfolgenden Inhalten ist.</target>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.withoutSpacing" resname="tt_content.ot_layout.withoutSpacing" approved="yes">
-				<source>Without spacing</source>
-				<target>Ohne Abstand</target>
-			</trans-unit>
-			<trans-unit id="tt_content.ot_layout.withSpacing" resname="tt_content.ot_layout.withSpacing" approved="yes">
-				<source>With spacing</source>
-				<target>Mit Abstand</target>
-			</trans-unit>
-			<trans-unit id="tt_content.assets.label" resname="tt_content.assets.label" approved="yes">
-				<source>Hero Image</source>
-				<target>Hero Bild</target>
-			</trans-unit>
-			<trans-unit id="tt_content.image.label" resname="tt_content.image.label" approved="yes">
-				<source>Optional image for small display resolutions</source>
-				<target>Optionales Bild für kleine Bildschirm-Auflösungen</target>
-			</trans-unit>
-		</body>
-	</file>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="en" trgLang="de">
+  <file id="ot-heroimage-locallang-be"
+        original="EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf">
+    <unit id="wizard.title">
+      <segment>
+        <source>Hero image</source>
+        <target>Hero image</target>
+      </segment>
+    </unit>
+    <unit id="wizard.description">
+      <segment>
+        <source>Image with a larger image width than in normal content columns.</source>
+        <target>Bild mit einer größeren Bildbreite als bei normalen Content-Spalten.</target>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.label">
+      <segment>
+        <source>Margins</source>
+        <target>Abstände</target>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.description">
+      <segment>
+        <source>For images where the text extends to the edge of the image, a margin can be added that is flush with the subsequent content.</source>
+        <target>Für Bilder, bei denen der Text bis zum Bildrand geht, kann ein Abstand hinzugefügt werden, der bündig zu den nachfolgenden Inhalten ist.</target>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.withoutSpacing">
+      <segment>
+        <source>Without spacing</source>
+        <target>Ohne Abstand</target>
+      </segment>
+    </unit>
+    <unit id="tt_content.ot_layout.withSpacing">
+      <segment>
+        <source>With spacing</source>
+        <target>Mit Abstand</target>
+      </segment>
+    </unit>
+    <unit id="tt_content.assets.label">
+      <segment>
+        <source>Hero Image</source>
+        <target>Hero Bild</target>
+      </segment>
+    </unit>
+    <unit id="tt_content.image.label">
+      <segment>
+        <source>Optional image for small display resolutions</source>
+        <target>Optionales Bild für kleine Bildschirm-Auflösungen</target>
+      </segment>
+    </unit>
+  </file>
 </xliff>
