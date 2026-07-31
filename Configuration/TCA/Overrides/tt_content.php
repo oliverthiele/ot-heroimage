@@ -11,7 +11,7 @@ defined('TYPO3') or die();
 
 call_user_func(
     static function () {
-        $ll = 'LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:';
+        $ll = 'ot_heroimage.be:';
 
         ExtensionManagementUtility::addPlugin(
             [
@@ -47,7 +47,7 @@ call_user_func(
 
         ExtensionManagementUtility::addToAllTCAtypes(
             'tt_content',
-            '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.media,assets,image,ot_layout,',
+            '--div--;frontend.ttc:tabs.media,assets,image,ot_layout,',
             'ot_heroimage',
             'after:image'
         );
@@ -70,7 +70,7 @@ call_user_func(
             [
                 'columnsOverrides' => [
                     'header' => [
-                        'description' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:header.description.ALT',
+                        'description' => 'frontend.ttc:header.description.ALT',
                     ],
                     'assets' => [
                         'label' => $ll . 'tt_content.assets.label',
@@ -208,8 +208,8 @@ call_user_func(
             ]
         );
         if (
-            ExtensionManagementUtility::isLoaded('ot_sitekitbase') &&
-            class_exists(GenericPreviewRenderer::class)
+            ExtensionManagementUtility::isLoaded('ot_sitekitbase')
+            && class_exists(GenericPreviewRenderer::class)
         ) {
             $GLOBALS['TCA']['tt_content']['types']['ot_heroimage']['previewRenderer'] = GenericPreviewRenderer::class;
         }
