@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [6.0.0] — 2026-07-31
+
+### Changed
+
+- **Breaking:** Drop TYPO3 v13 support, require TYPO3 `^14.3`
+- **Breaking:** Raise the PHP minimum to `>=8.4`
+- **Breaking:** Require `oliverthiele/ot-irrebuttons ^5.0`
+- Migrate the language files from XLIFF 1.2 to XLIFF 2.0. Unit identifiers and
+  all translations are unchanged, so no label reference needs adjusting
+- Reference labels via translation domain mapping instead of full file paths:
+  `ot_heroimage.be:` replaces
+  `LLL:EXT:ot_heroimage/Resources/Private/Language/locallang_be.xlf:`, and the
+  two core references now use `frontend.ttc:`
+
+### Fixed
+
+- The `original` attribute of both site set label files pointed at
+  `Configuration/Sets/OtHeroimage/labels.xlf`, a path that does not exist —
+  the directory is `Configuration/Sets/HeroImage/`. TYPO3 uses this attribute
+  to resolve the translation fallback chain
+
+---
+
 ## [5.0.2] — 2026-05-22
 
 ### Fixed
