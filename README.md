@@ -2,7 +2,7 @@
 
 Full-width hero image content element for TYPO3 v13 and v14, optimised for Core Web Vitals.
 
-[![TYPO3](https://img.shields.io/badge/TYPO3-13.4-orange.svg)](https://typo3.org/)
+[![TYPO3](https://img.shields.io/badge/TYPO3-14.3-orange.svg)](https://typo3.org/)
 [![Packagist Version](https://img.shields.io/packagist/v/oliverthiele/ot-heroimage.svg)](https://packagist.org/packages/oliverthiele/ot-heroimage)
 [![PHP](https://img.shields.io/packagist/dependency-v/oliverthiele/ot-heroimage/php.svg)](https://php.net/)
 [![License](https://img.shields.io/packagist/l/oliverthiele/ot-heroimage.svg)](LICENSE)
@@ -31,9 +31,9 @@ Full-width hero image content element for TYPO3 v13 and v14, optimised for Core 
 
 | Requirement                        | Version        |
 |------------------------------------|----------------|
-| TYPO3                              | ^13.4 \| ^14.3 |
-| PHP                                | >=8.3          |
-| oliverthiele/ot-irrebuttons        | ^4.0           |
+| TYPO3                              | ^14.3          |
+| PHP                                | >=8.4          |
+| oliverthiele/ot-irrebuttons        | ^5.0           |
 
 ---
 
