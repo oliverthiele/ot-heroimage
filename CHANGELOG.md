@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- Bundled fallback partial `Header/All`, so the content element renders in
+  projects without `ot_ceheader` and without `ot_sitekitbase`. It uses core
+  `tt_content` fields only and is registered with the lowest
+  `partialRootPaths` index, so both extensions still take precedence
+
+### Fixed
+
+- `tt_content.ot_heroimage` referenced `lib.sitekitContentElement`
+  unconditionally, which is only defined by `ot_sitekitbase`. Without that
+  extension the content element rendered no output at all. The base definition
+  now falls back to `lib.contentElement`
+- The site set did not import the extension constants, leaving
+  `{$projectSettings.framework.directory}` unresolved in projects without
+  `ot_sitekitbase` and pointing every resource path into the void
+
+---
+
 ## [6.0.0] — 2026-07-31
 
 ### Changed
