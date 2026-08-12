@@ -1,6 +1,6 @@
 # OT Hero Image — TYPO3 Extension
 
-Full-width hero image content element for TYPO3 v13 and v14, optimised for Core Web Vitals.
+Full-width hero image content element for TYPO3 v14, optimised for Core Web Vitals.
 
 [![TYPO3](https://img.shields.io/badge/TYPO3-14.3-orange.svg)](https://typo3.org/)
 [![Packagist Version](https://img.shields.io/packagist/v/oliverthiele/ot-heroimage.svg)](https://packagist.org/packages/oliverthiele/ot-heroimage)
@@ -24,6 +24,8 @@ Full-width hero image content element for TYPO3 v13 and v14, optimised for Core 
 - **Text overlay** — optional heading/button overlay via `ot-ceheader` and
   `ot-irrebuttons`
 - **SiteKit integration** — dynamic template paths, `isLoaded` conditions
+- **Standalone operation** — falls back to `lib.contentElement` and a bundled
+  header partial when `ot-sitekit-base` is not installed
 
 ---
 
