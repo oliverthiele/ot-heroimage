@@ -1,5 +1,14 @@
+# Base render definition: use the SiteKit variant when "ot_sitekitbase" is installed,
+# otherwise fall back to the standard "lib.contentElement" provided by fluid_styled_content.
+# This assignment must happen before the configuration block below, because "=<" replaces
+# the whole object and would discard any previously set properties.
+[isLoaded('ot_sitekitbase')]
+  tt_content.ot_heroimage =< lib.sitekitContentElement
+[ELSE]
+  tt_content.ot_heroimage =< lib.contentElement
+[END]
+
 tt_content {
-  ot_heroimage =< lib.sitekitContentElement
   ot_heroimage {
     templateName = OtHeroimage
 
@@ -7,8 +16,11 @@ tt_content {
       20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Templates/
     }
 
+    # Registered with a low index on purpose: the bundled partials are only fallbacks
+    # and must be overridden by "ot_ceheader" (14), "ot_irrebuttons" (15) and
+    # "ot_sitekitbase" (60) whenever those extensions are installed.
     partialRootPaths {
-      20 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Partials/
+      10 = EXT:ot_heroimage/Resources/Private/{$projectSettings.framework.directory}/Partials/
     }
 
     layoutRootPaths {
@@ -47,7 +59,7 @@ tt_content {
       }
 
       partialRootPaths {
-        20 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Partials/
+        10 = EXT:ot_heroimage/Resources/Private/{$sitekit.frameworks.frontend.directory}/Partials/
       }
 
       layoutRootPaths {

@@ -1,6 +1,7 @@
-# All my Extensions use now {$sitekit.frameworks.frontend.directory} instead projectSettings.framework.directory!
-# Therefore, I am not including the TypoScript:
-# @import "EXT:ot_heroimage/Configuration/TypoScript/constants.typoscript"
+# Default for the legacy constant, so the extension also works without the SiteKit extensions.
+# The setup overrides the resource paths with {$sitekit.frameworks.frontend.directory}
+# as soon as "ot_sitekitbase" is installed.
+@import "EXT:ot_heroimage/Configuration/TypoScript/constants.typoscript"
 
 # If you use my Sitekit extensions, the variable `sitekit.frameworks.frontend.directory` is automatically set for all
 # content elements. Otherwise, it can be set, for example, via `sitekit.frameworks.frontend.directory = Bootstrap5`.
